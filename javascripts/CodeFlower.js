@@ -76,7 +76,7 @@ CodeFlower.prototype.update = function(json) {
       //return "hsl(" + parseInt(360 / total * d.id, 10) + ",90%,70%)";
       //return "d3.interpolateReds(d.id / total)";
       console.log(d.id);
-      return d3.interpolateReds(d.id / total); 
+      return "d3.interpolateReds(d.id / total)"; 
     })
     .call(this.force.drag)
     .on("click", this.click.bind(this))
