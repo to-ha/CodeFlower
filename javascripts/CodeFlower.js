@@ -31,7 +31,7 @@ CodeFlower.prototype.update = function(json) {
   var nodes = this.flatten(this.json);
   var links = d3.layout.tree().links(nodes);
   var total = nodes.length || 1;
-  var color = d3.scaleSequential().domain([20,60]).interpolator(d3.interpolateBlues);
+  var color = d3.interpolateBlues;
 
 
   // remove existing text (will readd it afterwards to be sure it's on top)
