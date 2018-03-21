@@ -71,7 +71,8 @@ CodeFlower.prototype.update = function(json) {
     .classed('directory', function(d) { return (d._children || d.children) ? 1 : 0; })
     .attr("r", function(d) { return d.children ? 3.5 : Math.pow(d.size, 2/5) || 1; })
     .style("fill", function color(d) {
-      return "hsl(" + parseInt(360 / total * d.id, 10) + ",90%,70%)";
+      //return "hsl(" + parseInt(360 / total * d.id, 10) + ",90%,70%)";
+      return "d3.interpolateReds(d.id / total)";
     })
     .call(this.force.drag)
     .on("click", this.click.bind(this))
