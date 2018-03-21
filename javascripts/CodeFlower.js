@@ -31,6 +31,8 @@ CodeFlower.prototype.update = function(json) {
   var nodes = this.flatten(this.json);
   var links = d3.layout.tree().links(nodes);
   var total = nodes.length || 1;
+  var color = d3.scaleSequential().domain([20,60]).interpolator(d3.interpolateBlues);
+
 
   // remove existing text (will readd it afterwards to be sure it's on top)
   this.svg.selectAll("text").remove();
@@ -72,7 +74,9 @@ CodeFlower.prototype.update = function(json) {
     .attr("r", function(d) { return d.children ? 3.5 : Math.pow(d.size, 2/5) || 1; })
     .style("fill", function color(d) {
       //return "hsl(" + parseInt(360 / total * d.id, 10) + ",90%,70%)";
-      return "d3.interpolateReds(d.id / total)";
+      //return "d3.interpolateReds(d.id / total)";
+      console.log(d.value);
+      return color(d.value); 
     })
     .call(this.force.drag)
     .on("click", this.click.bind(this))
