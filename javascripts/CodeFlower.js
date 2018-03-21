@@ -10,7 +10,8 @@ var CodeFlower = function(selector, w, h) {
 
   this.svg.append("svg:rect")
     .style("stroke", "#999")
-    .style("fill", "#fff")
+    //.style("fill", "#fff")
+    .style("fill", "red")
     .attr('width', w)
     .attr('height', h);
 
@@ -50,7 +51,7 @@ CodeFlower.prototype.update = function(json) {
 
   // Enter any new links
   this.link.enter().insert("svg:line", ".node")
-    .style("stroke", "red")
+    .style("stroke", "white")
     .attr("class", "link")
     .attr("x1", function(d) { return d.source.x; })
     .attr("y1", function(d) { return d.source.y; })
@@ -80,9 +81,9 @@ CodeFlower.prototype.update = function(json) {
       //return "d3.interpolateReds(" + parseInt(d.id / total) +")"; 
       //return "d3.interpolateReds(1)"; 
     //})
-    .style("fill", "red")
+    .style("fill", "white")
     .style("fill-opacity", .2)
-    .style("stroke", "red")
+    .style("stroke", "white")
     .call(this.force.drag)
     .on("click", this.click.bind(this))
     .on("mouseover", this.mouseover.bind(this))
