@@ -31,7 +31,7 @@ CodeFlower.prototype.update = function(json) {
   var nodes = this.flatten(this.json);
   var links = d3.layout.tree().links(nodes);
   var total = nodes.length || 1;
-  //var color = d3.interpolateBlues;
+  var color = d3.interpolateReds(d3.scale.linear().domain(0,3600).range(0,1));
 
 
   // remove existing text (will readd it afterwards to be sure it's on top)
@@ -77,7 +77,7 @@ CodeFlower.prototype.update = function(json) {
       //return "d3.interpolateReds(d.id / total)";
       //console.log(d.id);
       //return "d3.interpolateReds(" + parseInt(d.id / total) +")"; 
-      return "d3.interpolateReds(0.5)"; 
+      return "d3.interpolateReds(1)"; 
     })
     .call(this.force.drag)
     .on("click", this.click.bind(this))
