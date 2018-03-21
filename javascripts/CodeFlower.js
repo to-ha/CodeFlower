@@ -50,6 +50,7 @@ CodeFlower.prototype.update = function(json) {
 
   // Enter any new links
   this.link.enter().insert("svg:line", ".node")
+    .style("stroke", "red")
     .attr("class", "link")
     .attr("x1", function(d) { return d.source.x; })
     .attr("y1", function(d) { return d.source.y; })
@@ -81,6 +82,7 @@ CodeFlower.prototype.update = function(json) {
     //})
     .style("fill", "red")
     .style("fill-opacity", .2)
+    .style("stroke", "red")
     .call(this.force.drag)
     .on("click", this.click.bind(this))
     .on("mouseover", this.mouseover.bind(this))
